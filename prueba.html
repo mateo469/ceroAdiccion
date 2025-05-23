@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cookies</title>
+</head>
+<body>
+ <style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  
+  }
+  body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #b727ab;
+  }
+  .container{
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 150vh;
+    margin: 0 auto;
+    background: #5d63d1;
+  }
+  #cookies-notice {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10pt;
+    text-align: justify;
+     width: 400px;
+     color: #f9f9f9;
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px;
+  }
+  
+  #cookies-notice p {
+    margin: 0;
+    padding: 0;
+  }
+  
+  #cookies-notice a {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  #cookies-accept {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+ </style> 
+ <section class="container">
+  <div id="cookies-notice">
+    <p>Este sitio web utiliza cookies para mejorar su experiencia de navegación. Al continuar navegando por este sitio web, usted acepta el uso de cookies.</p>
+    <a href="/politica-de-cookies">Más información</a>
+    <button id="cookies-accept">Aceptar</button>
+  </div>
+
+ </section>
+  
+
+  <script>
+    const cookiesNotice = document.getElementById('cookies-notice');
+const cookiesAccept = document.getElementById('cookies-accept');
+
+cookiesAccept.addEventListener('click', () => {
+  cookiesNotice.style.display = 'none';
+
+  // Almacenar una cookie para indicar que el usuario ha aceptado las cookies
+  document.cookie = 'cookies_accepted=true; expires=Thu, 01 Jan 2024 00:00:00 GMT';
+});
+
+// Mostrar el aviso de cookies solo si el usuario no ha aceptado las cookies
+if (!document.cookie.includes('cookies_accepted=true')) {
+  cookiesNotice.style.display = 'block';
+}
+  </script>
+  
+</body>
+</html>
